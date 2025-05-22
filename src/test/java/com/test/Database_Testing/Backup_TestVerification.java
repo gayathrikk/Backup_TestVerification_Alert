@@ -52,8 +52,8 @@
 	    }
 	
 	    private void sendEmailVerificationPending(List<String> biosampleIds, List<String> brainNames) {
-	        String from = "automationsoftware25@gmail.com";
-	        String password = "wjzcgaramsqvagxu";
+	      final String from = "automationsoftware25@gmail.com";
+	      final String password = "wjzcgaramsqvagxu"; // App Password
 	        String[] to = {"gayuriche26@gmail.com"};
 	        String subject = "⚠ Backup Verification Pending Alert";
 	
