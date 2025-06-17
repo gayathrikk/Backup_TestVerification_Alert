@@ -61,14 +61,14 @@ public class Backup_TestVerification {
         String from = "automationsoftware25@gmail.com";
         String password = "wjzcgaramsqvagxu";
         String to = "sindhu.r@htic.iitm.ac.in";
-        String[] bcc = {
-        	    "richavermaj@gmail.com",
-        	    "supriti@htic.iitm.ac.in",
-        	    "azizahammed.a@htic.iitm.ac.in",
-        	    "satheskumar@htic.iitm.ac.in",
-        	    "karthiksgbc7@gmail.com",
-        	    "selango925@gmail.com"
-        	};
+      String[] bcc = new String[] {
+        "richavermaj@gmail.com",
+        "supriti@htic.iitm.ac.in",
+        "azizahammed.a@htic.iitm.ac.in",
+        "satheskumar@htic.iitm.ac.in",
+        "karthiksgbc7@gmail.com",
+        "selango925@gmail.com"
+        };
         String subject = "⚠ Backup Verification Pending Alert";
 
         Properties props = new Properties();
@@ -129,10 +129,9 @@ public class Backup_TestVerification {
             for (String recipient : to) {
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
             }
-            for (String bccRecipient : bcc) {
-                message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bccRecipient));
-            }
-
+          for (String bccRecipient : bcc) {
+          message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bccRecipient));
+    }
             message.setSubject(subject);
             message.setContent(bodyBuilder.toString(), "text/html");
 
