@@ -34,7 +34,7 @@ public class Backup_TestVerification {
 
                     List<String> biosampleIds = new ArrayList<>();
                     List<String> brainNames = new ArrayList<>();
-                    List<Date> handoverDates = new ArrayList<>();
+                    List<java.util.Date> handoverDates = new ArrayList<>();
 
                     while (rs.next()) {
                         biosampleIds.add(rs.getString("bio_id"));
@@ -56,17 +56,17 @@ public class Backup_TestVerification {
         }
     }
 
-    private void sendEmailVerificationPending(List<String> biosampleIds, List<String> brainNames, List<Date> handoverDates) {
+    private void sendEmailVerificationPending(List<String> biosampleIds, List<String> brainNames, List<java.util.Date> handoverDates) {
         String from = "automationsoftware25@gmail.com";
         String password = "wjzcgaramsqvagxu";
         String to = "sindhu.r@htic.iitm.ac.in";
-        String[] bcc = new String[] {
-            "richavermaj@gmail.com",
-            "supriti@htic.iitm.ac.in",
-            "azizahammed.a@htic.iitm.ac.in",
-            "satheskumar@htic.iitm.ac.in",
-            "karthiksgbc7@gmail.com",
-            "selango925@gmail.com"
+        String[] bcc = new String[]{
+                "richavermaj@gmail.com",
+                "supriti@htic.iitm.ac.in",
+                "azizahammed.a@htic.iitm.ac.in",
+                "satheskumar@htic.iitm.ac.in",
+                "karthiksgbc7@gmail.com",
+                "selango925@gmail.com"
         };
         String subject = "⚠ Backup Verification Pending Alert";
 
@@ -82,7 +82,7 @@ public class Backup_TestVerification {
             }
         });
 
-        // Build HTML email content
+        // Build HTML content
         StringBuilder bodyBuilder = new StringBuilder();
         bodyBuilder.append("<html><body>");
         bodyBuilder.append("<p>Dear Team,</p>");
@@ -101,10 +101,9 @@ public class Backup_TestVerification {
         for (int i = 0; i < biosampleIds.size(); i++) {
             String bioId = biosampleIds.get(i);
             String brainName = brainNames.get(i);
-            Date handoverDate = handoverDates.get(i);
+            java.util.Date handoverDate = handoverDates.get(i);
             String formattedDate = sdf.format(handoverDate);
 
-            // Calculate days pending
             LocalDate handover = new java.sql.Date(handoverDate.getTime()).toLocalDate();
             long daysPending = ChronoUnit.DAYS.between(handover, LocalDate.now());
 
@@ -127,7 +126,6 @@ public class Backup_TestVerification {
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-            // Add BCC recipients
             for (String bccRecipient : bcc) {
                 message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bccRecipient));
             }
