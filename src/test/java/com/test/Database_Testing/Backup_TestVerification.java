@@ -57,8 +57,8 @@ public class Backup_TestVerification {
     }
 
     private void sendEmailVerificationPending(List<String> biosampleIds, List<String> brainNames, List<java.util.Date> handoverDates) {
-        String from = "automationsoftware25@gmail.com";
-        String password = "wjzcgaramsqvagxu";
+        final String from = "automationsoftware25@gmail.com";
+        final String password = "wjzcgaramsqvagxu";
         String to = "sindhu.r@htic.iitm.ac.in";
         String[] bcc = new String[]{
                 "richavermaj@gmail.com",
@@ -104,6 +104,7 @@ public class Backup_TestVerification {
             java.util.Date handoverDate = handoverDates.get(i);
             String formattedDate = sdf.format(handoverDate);
 
+            // Calculate days pending
             LocalDate handover = new java.sql.Date(handoverDate.getTime()).toLocalDate();
             long daysPending = ChronoUnit.DAYS.between(handover, LocalDate.now());
 
@@ -125,7 +126,6 @@ public class Backup_TestVerification {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
             for (String bccRecipient : bcc) {
                 message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bccRecipient));
             }
