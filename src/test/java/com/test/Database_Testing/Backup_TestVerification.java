@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.sql.*;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -61,13 +60,13 @@ public class Backup_TestVerification {
         String from = "automationsoftware25@gmail.com";
         String password = "wjzcgaramsqvagxu";
         String to = "sindhu.r@htic.iitm.ac.in";
-      String[] bcc = new String[] {
-        "richavermaj@gmail.com",
-        "supriti@htic.iitm.ac.in",
-        "azizahammed.a@htic.iitm.ac.in",
-        "satheskumar@htic.iitm.ac.in",
-        "karthiksgbc7@gmail.com",
-        "selango925@gmail.com"
+        String[] bcc = new String[] {
+            "richavermaj@gmail.com",
+            "supriti@htic.iitm.ac.in",
+            "azizahammed.a@htic.iitm.ac.in",
+            "satheskumar@htic.iitm.ac.in",
+            "karthiksgbc7@gmail.com",
+            "selango925@gmail.com"
         };
         String subject = "⚠ Backup Verification Pending Alert";
 
@@ -83,7 +82,7 @@ public class Backup_TestVerification {
             }
         });
 
-        // Build HTML content
+        // Build HTML email content
         StringBuilder bodyBuilder = new StringBuilder();
         bodyBuilder.append("<html><body>");
         bodyBuilder.append("<p>Dear Team,</p>");
@@ -126,12 +125,13 @@ public class Backup_TestVerification {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
-            for (String recipient : to) {
-                message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+            // Add BCC recipients
+            for (String bccRecipient : bcc) {
+                message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bccRecipient));
             }
-          for (String bccRecipient : bcc) {
-          message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bccRecipient));
-    }
+
             message.setSubject(subject);
             message.setContent(bodyBuilder.toString(), "text/html");
 
