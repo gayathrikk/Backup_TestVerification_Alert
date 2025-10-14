@@ -65,7 +65,6 @@ public class Backup_TestVerification {
                 "supriti@htic.iitm.ac.in",
                 "azizahammed.a@htic.iitm.ac.in",
                 "satheskumar@htic.iitm.ac.in",
-                "karthiksgbc7@gmail.com",
                 "selango925@gmail.com"
         };
         String subject = "⚠ Backup Verification Pending Alert";
@@ -141,3 +140,4 @@ public class Backup_TestVerification {
         }
     }
 }
+
