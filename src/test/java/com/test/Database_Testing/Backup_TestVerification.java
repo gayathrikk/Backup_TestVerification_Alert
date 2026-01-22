@@ -63,7 +63,7 @@ public class Backup_TestVerification {
         String[] bcc = new String[]{
                 "richavermaj@gmail.com",
                 "supriti@htic.iitm.ac.in",
-                "azizahammed.a@htic.iitm.ac.in",
+                "ramanan@htic.iitm.ac.in",
                 "satheskumar@htic.iitm.ac.in",
                 "selango925@gmail.com"
         };
@@ -140,4 +140,5 @@ public class Backup_TestVerification {
         }
     }
 }
+
 
