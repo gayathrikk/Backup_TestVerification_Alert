@@ -58,7 +58,7 @@ public class Backup_TestVerification {
 
     private void sendEmailVerificationPending(List<String> biosampleIds, List<String> brainNames, List<java.util.Date> handoverDates) {
         final String from = "automationsoftware25@gmail.com";
-        final String password = "wjzcgaramsqvagxu";
+        final String password = "cbsiopyovcrwyblp";
         String to = "sindhu.r@htic.iitm.ac.in";
         String[] bcc = new String[]{
                 "richavermaj@gmail.com",
